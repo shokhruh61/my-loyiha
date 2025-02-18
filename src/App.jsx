@@ -1,10 +1,12 @@
 import React from "react";
-import Header from "./components/Header";
+import Center from "./pages/Center";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
   return (
     <div>
-      <Header />
+      <MainLayout />
+      <Center />
     </div>
   );
 }
