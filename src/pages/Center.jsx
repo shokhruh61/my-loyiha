@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // React Router navigatsiyasi uchun
 import data from "../assets/data.json";
 import Plus from "../assets/images/plus.svg";
 import useStore from "../store/useStore"; // Zustand store-ni import qilish
@@ -10,10 +11,10 @@ const statusColors = {
 };
 
 function Center() {
+  const navigate = useNavigate(); // Navigate hook
   const { isDarkMode, setDarkMode } = useStore();
   const [isFilterOpen, setIsFilterOpen] = useState(false); // Filter panelining holati
 
-  // Light/Dark mode switch based on user's preference or system theme
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode");
     if (savedMode) {
@@ -25,7 +26,6 @@ function Center() {
 
   useEffect(() => {
     localStorage.setItem("darkMode", isDarkMode);
-
     document.body.classList.toggle("dark", isDarkMode);
   }, [isDarkMode]);
 
@@ -63,12 +63,7 @@ function Center() {
       {isFilterOpen && (
         <div className="absolute top-16 left-0 bg-white shadow-md p-4 w-64 rounded-md dark:bg-[#141625]">
           <h3 className="font-semibold text-gray-700 mb-4">Filter by Status</h3>
-          <select className="w-full p-2 outline-none bg-gray-100 dark:bg-gray-800 dark:text-white">
-            <option value="all">All</option>
-            <option value="paid">Paid</option>
-            <option value="pending">Pending</option>
-            <option value="draft">Draft</option>
-          </select>
+          <input type="text" placeholder="" />
         </div>
       )}
 
@@ -77,6 +72,7 @@ function Center() {
           <div
             key={invoice.id}
             className="p-4 flex items-center justify-between bg-white rounded-lg shadow-md dark:bg-[#141625] cursor-pointer hover:shadow-lg transition"
+            onClick={() => navigate(`/invoice/${invoice.id}`)} // Navigate qilish
           >
             <div>
               <h3 className="text-sm font-semibold text-gray-700">
