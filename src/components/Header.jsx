@@ -3,7 +3,7 @@ import Logo from "../assets/images/logo.svg";
 import Dark from "../assets/images/dark.svg";
 import Light from "../assets/images/light.svg";
 import Man from "../assets/images/man.svg";
-import useStore from "../store/useStore"; // Zustand store-ni import qilish
+import useStore from "../store/useStore"; 
 
 function Header() {
   const { isDarkMode, toggleDarkMode, setDarkMode } = useStore();
@@ -24,8 +24,9 @@ function Header() {
 
   return (
     <header
-      className={`flex flex-col items-center w-[103px] h-screen fixed left-0 top-0 shadow-lg ${isDarkMode ? "bg-gray-900" : "bg-gray-800"
-        }`}
+      className={`flex flex-col items-center w-[103px] h-screen fixed left-0 top-0 shadow-lg ${
+        isDarkMode ? "bg-gray-900" : "bg-gray-800"
+      }`}
     >
       <a href="/" className="mb-8">
         <img
@@ -40,7 +41,7 @@ function Header() {
           src={isDarkMode ? Light : Dark}
           alt="Dark mode toggle"
           className="w-6 h-6 cursor-pointer"
-          onClick={toggleDarkMode} // Dark mode-ni almashtirish
+          onClick={toggleDarkMode}
         />
         <img
           src={Man}

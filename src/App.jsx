@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useInvoiceStore } from "./store/getStoredInvoices";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import InvoicePage from "./pages/invoicePage";
 import Center from "./pages/Center";
 import MainLayout from "./layouts/MainLayout";
+import NewInvoice from "./pages/NewInvoice";
+import Invoice from "./pages/Invoice";
 
 const sampleInvoices = [
   {
@@ -33,13 +35,14 @@ function App() {
   }, []);
 
   return (
-    <div>
-    <MainLayout />
-    <Routes>
-      <Route path="/" element={<Center />} />
-      <Route path="/invoice/:id" element={<InvoicePage />} />
-    </Routes>
-    </div>
+    <Router>
+      <MainLayout />
+      <Routes>
+        <Route path="/" element={<Center />} />
+        <Route path="/invoice/:id" element={<Invoice />} />
+        <Route path="/new-invoice" element={<NewInvoice />} />
+      </Routes>
+    </Router>
   );
 }
 

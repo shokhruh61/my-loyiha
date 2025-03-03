@@ -1,9 +1,6 @@
 @import "tailwindcss";
 
-/* Dark mode styling */
 body.dark {
-    background-color: #141625;
-    /* Dark mode fon rangi */
-    color: white;
-    /* Yozuv rangini oq qilish */
+  background-color: #141625;
+  color: white;
 }
